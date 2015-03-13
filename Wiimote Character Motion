@@ -1,0 +1,11 @@
+def update():
+	keyboard.setKey(Key.W, wiimote[0].buttons.button_down(WiimoteButtons.DPadUp))
+	keyboard.setKey(Key.A, wiimote[0].buttons.button_down(WiimoteButtons.DPadLeft))
+	keyboard.setKey(Key.S, wiimote[0].buttons.button_down(WiimoteButtons.DPadDown))
+	keyboard.setKey(Key.D, wiimote[0].buttons.button_down(WiimoteButtons.DPadRight))
+	keyboard.setKey(Key.LeftShift, wiimote[0].buttons.button_down(WiimoteButtons.B))
+	
+		
+if starting:
+	wiimote[0].buttons.update += update
+	
