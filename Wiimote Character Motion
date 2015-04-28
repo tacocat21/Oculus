@@ -1,30 +1,24 @@
-#import time
-
 def update():
+	##keyboard bindings
 	keyboard.setKey(Key.W, wiimote[0].buttons.button_down(WiimoteButtons.DPadUp))
 	keyboard.setKey(Key.A, wiimote[0].buttons.button_down(WiimoteButtons.DPadLeft))
 	keyboard.setKey(Key.S, wiimote[0].buttons.button_down(WiimoteButtons.DPadDown))
 	keyboard.setKey(Key.D, wiimote[0].buttons.button_down(WiimoteButtons.DPadRight))
 	keyboard.setKey(Key.LeftAlt, wiimote[0].buttons.button_down(WiimoteButtons.B))	
-	##mouse.leftButton = wiimote[0].buttons.button_down(WiimoteButtons.A)
-	##initialX = wiimote[0].acceleration.x
-	##time.sleep(1)
-	##finalX = wiimote[0].acceleration.x
-	##deltaX = finalX - initialX
-	mouse.leftButton = (wiimote[0].acceleration.z > 10) 
-	##if(mouse.leftButton):
-	##	time.sleep(1)
-		
-	##mouse.leftButton = wiimote[0].acceleration.x >
-	diagnostics.watch(wiimote[0].acceleration.x) #roll
-	diagnostics.watch(wiimote[0].acceleration.y) #pitch(0 = horizontal)
-	diagnostics.watch(wiimote[0].acceleration.z) #pitch(0 = vertical)
-	##diagnostics.watch(wiimote[0].ahrs.pitch)
+	keyboard.setKey(Key.F12, wiimote[0].buttons.button_down(WiimoteButtons.A))
+	
+	##mouse binding
+	mouse.leftButton = (wiimote[0].acceleration.z > 40) 
+
+	##display accelerations
+	diagnostics.watch(wiimote[0].acceleration.x) 
+	diagnostics.watch(wiimote[0].acceleration.y) 
+	diagnostics.watch(wiimote[0].acceleration.z) 
 	
 if starting:
-	##pitch = 0
-	##freeTrack.update += update
+
 	wiimote[0].buttons.update += update
 	wiimote[0].acceleration.calibrated
-	##wiimote[0].motionplus.update += simulateMousePress 
+	wiimote[0].enable(WiimoteCapabilities.MotionPlus)
+
 	
